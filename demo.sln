@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "demo", "demo\demo.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "palindrome", "palindrome\palindrome.csproj", "{3E087CEC-CC0D-4EEF-87E6-5E3C1BAC15BC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vowels", "vowels\vowels.csproj", "{35B01631-6451-45C3-A83C-FE95B082B799}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{3E087CEC-CC0D-4EEF-87E6-5E3C1BAC15BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3E087CEC-CC0D-4EEF-87E6-5E3C1BAC15BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3E087CEC-CC0D-4EEF-87E6-5E3C1BAC15BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35B01631-6451-45C3-A83C-FE95B082B799}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35B01631-6451-45C3-A83C-FE95B082B799}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35B01631-6451-45C3-A83C-FE95B082B799}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35B01631-6451-45C3-A83C-FE95B082B799}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
