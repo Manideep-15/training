@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vowels", "vowels\vowels.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "student lists", "student lists\student lists.csproj", "{9FF454FC-C756-415B-8215-AAFA3E317F73}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "word frequency using dictionary", "word frequency using dictionary\word frequency using dictionary.csproj", "{389513B5-DC1B-4845-9F9C-74613E98F3CB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{9FF454FC-C756-415B-8215-AAFA3E317F73}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9FF454FC-C756-415B-8215-AAFA3E317F73}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9FF454FC-C756-415B-8215-AAFA3E317F73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{389513B5-DC1B-4845-9F9C-74613E98F3CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{389513B5-DC1B-4845-9F9C-74613E98F3CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{389513B5-DC1B-4845-9F9C-74613E98F3CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{389513B5-DC1B-4845-9F9C-74613E98F3CB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
