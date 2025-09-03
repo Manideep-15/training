@@ -10,7 +10,7 @@ namespace word_frequency_using_dictionary
     {
         static void Main(string[] args)
         {
-            string sentence = "hello world hello code";
+            string sentence = "hello there, I am a student";
             string[] words = sentence.Split(' ');
 
             Dictionary<string, int> freq = new Dictionary<string, int>();
