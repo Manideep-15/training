@@ -11,7 +11,7 @@ namespace Void_Method
         static void GreetUser(string name)
         {
             Console.WriteLine("Hello " + name);
-            Console.WriteLine("Welcome " + name); // not necessary to repeat name
+            Console.WriteLine("Welcome " + name); 
         }
 
         static void Main()
