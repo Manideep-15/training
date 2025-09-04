@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Void Method", "Void Method\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Division Error", "Division Error\Division Error.csproj", "{7B0019C2-866A-47C5-9760-5C9BFAAF25B2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "addition method", "addition method\addition method.csproj", "{7DE441C9-758E-44A0-96E0-29AA9A7812ED}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{7B0019C2-866A-47C5-9760-5C9BFAAF25B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B0019C2-866A-47C5-9760-5C9BFAAF25B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B0019C2-866A-47C5-9760-5C9BFAAF25B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DE441C9-758E-44A0-96E0-29AA9A7812ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DE441C9-758E-44A0-96E0-29AA9A7812ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DE441C9-758E-44A0-96E0-29AA9A7812ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DE441C9-758E-44A0-96E0-29AA9A7812ED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
