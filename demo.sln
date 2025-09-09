@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "learn", "learn\learn.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "swap", "swap\swap.csproj", "{490E9A11-AB38-4325-9CF2-49707CA12139}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "swap without temp", "swap without temp\swap without temp.csproj", "{4EEB3DC5-1BD8-4A47-BBD6-EBA0229DC106}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -99,6 +101,10 @@ Global
 		{490E9A11-AB38-4325-9CF2-49707CA12139}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{490E9A11-AB38-4325-9CF2-49707CA12139}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{490E9A11-AB38-4325-9CF2-49707CA12139}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EEB3DC5-1BD8-4A47-BBD6-EBA0229DC106}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EEB3DC5-1BD8-4A47-BBD6-EBA0229DC106}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EEB3DC5-1BD8-4A47-BBD6-EBA0229DC106}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EEB3DC5-1BD8-4A47-BBD6-EBA0229DC106}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
