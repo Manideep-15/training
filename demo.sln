@@ -35,6 +35,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "swap", "swap\swap.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "swap without temp", "swap without temp\swap without temp.csproj", "{4EEB3DC5-1BD8-4A47-BBD6-EBA0229DC106}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "factorial", "ConsoleApp1\factorial.csproj", "{0A132B0B-9498-48A1-A3BD-884D1DEB4515}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -105,6 +107,10 @@ Global
 		{4EEB3DC5-1BD8-4A47-BBD6-EBA0229DC106}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4EEB3DC5-1BD8-4A47-BBD6-EBA0229DC106}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4EEB3DC5-1BD8-4A47-BBD6-EBA0229DC106}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A132B0B-9498-48A1-A3BD-884D1DEB4515}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A132B0B-9498-48A1-A3BD-884D1DEB4515}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A132B0B-9498-48A1-A3BD-884D1DEB4515}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A132B0B-9498-48A1-A3BD-884D1DEB4515}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
