@@ -3,20 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SqlClient;
+using System.Xml.Linq;
 
 namespace Employee_Management_Tool
 {
-    class Employee
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Department { get; set; }
-        public double Salary { get; set; }
-    }
-
     class Program
     {
-        static List<Employee> employees = new List<Employee>();
+        static string connectionString = "Server = MANDEEP_OFFICE\\SQLEXPRESS; Database = EmployeeDB; Trusted_Connection = True;";
         static void Main(string[] args)
         {
             int choice = 0;
@@ -58,56 +52,84 @@ namespace Employee_Management_Tool
 
         static void AddEmployee()
         {
-            Employee emp = new Employee();
-
             Console.WriteLine("Enter Employee Id");
-            emp.Id = Convert.ToInt32(Console.ReadLine());
+            int id = Convert.ToInt32(Console.ReadLine());
 
             Console.WriteLine("Enter Employee Name");
-            emp.Name = Console.ReadLine();
+            string Name = Console.ReadLine();
 
-            Console.WriteLine("Enter Employee Department");
-            emp.Department = Console.ReadLine();
+            Console.WriteLine("Enter Department");
+            string dept = Console.ReadLine();
 
             Console.WriteLine("Enter Employee Salary");
-            emp.Salary = Convert.ToDouble(Console.ReadLine());
+            double salary = Convert.ToDouble(Console.ReadLine());
 
-            employees.Add(emp);
-            Console.WriteLine("Employee added successfully");
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Open();
+                string query = "INSERT INTO Employees (Id, Name, Department, Salary) VALUES (@Id, @Name, @Dept, @Salary)";
+                SqlCommand cmd = new SqlCommand(query, con);
+                cmd.Parameters.AddWithValue("@Id", id);
+                cmd.Parameters.AddWithValue("@Name", Name);
+                cmd.Parameters.AddWithValue("@dept", dept);
+                cmd.Parameters.AddWithValue("@Salary", salary);
+                cmd.ExecuteNonQuery();
+                Console.WriteLine("Employee Added Successfully!!");
+            }
+
         }
 
         static void ViewEmployees()
         {
-            Console.WriteLine("Employee List");
-            foreach (var emp in employees)
+            using (SqlConnection con = new SqlConnection(connectionString))
             {
-                Console.WriteLine($"Id: {emp.Id}, Name: {emp.Name}, Dept: {emp.Department}, Salary: {emp.Salary}");
+                con.Open();
+                string query = "SELECT * FROM Employees";
+                SqlCommand cmd = new SqlCommand(query, con);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                Console.WriteLine("\n Employee list");
+                while (reader.Read())
+                {
+                    Console.WriteLine($"ID: {reader["Id"]}, Name: {reader["Name"]}, Dept: {reader["Department"]}, Salary: {reader["Salary"]}");
+
+                }
+
             }
         }
 
         static void UpdateEmployee()
         {
-            Console.WriteLine("Enter Employee Id to Update: ");
-            int id = Convert.ToInt32(Console.ReadLine());
+             Console.WriteLine("Enter Employee Id to Update:");
+             int id = Convert.ToInt32(Console.ReadLine());
 
-            Employee emp = employees.Find(e => e.Id == id);
-            if (emp != null)
+             Console.WriteLine("Enter New Name: ");
+             string Name = Console.ReadLine();
+
+             Console.WriteLine("Enter New Department: ");
+             string dept = Console.ReadLine();
+
+             Console.WriteLine("Enter new Salary: ");
+             double salary = Convert.ToDouble(Console.ReadLine());
+
+            using (SqlConnection con = new SqlConnection(connectionString))
             {
-                Console.WriteLine("Enter New Name: ");
-                emp.Name = Console.ReadLine();
+                con.Open();
+                string query = "Update Employees SET Name=@Name, Department=@Dept, Salary=@Salary WHERE Id=@Id";
+                SqlCommand cmd = new SqlCommand(query, con);
+                cmd.Parameters.AddWithValue("@Id", id);
+                cmd.Parameters.AddWithValue("@Name", Name);
+                cmd.Parameters.AddWithValue("@dept", dept);
+                cmd.Parameters.AddWithValue("@Salary", salary);
+                int rows = cmd.ExecuteNonQuery();
 
-                Console.WriteLine("Enter New Department: ");
-                emp.Department = Console.ReadLine();
+                if (rows > 0)
+                    Console.WriteLine("Employee Updated Successfully");
+                else
+                    Console.WriteLine("Employees not found");
 
-                Console.WriteLine("Enter new Salary: ");
-                emp.Salary = Convert.ToDouble(Console.ReadLine());
-
-                Console.WriteLine("Employee Updated Successfully");
             }
-            else
-            {
-                Console.WriteLine("Employee not found!");
-            }
+
         }
 
         static void DeleteEmployee()
@@ -115,17 +137,20 @@ namespace Employee_Management_Tool
             Console.WriteLine("Enter employee Id to Delete: ");
             int id = Convert.ToInt32(Console.ReadLine());
 
-            Employee emp = employees.Find(e => e.Id == id);
-            if (emp != null)
+            using (SqlConnection con = new SqlConnection(connectionString))
             {
-                employees.Remove(emp);
-                Console.WriteLine("Employee Deleted Successfully");
+                con.Open();
+                string query = "DELETE FROM Employees WHERE Id=@Id";
+                SqlCommand cmd = new SqlCommand(query, con);
+                cmd.Parameters.AddWithValue("@Id", id);
+                int rows = cmd.ExecuteNonQuery();
 
-            }
-
-            else
-            {
-                Console.WriteLine("Employee not found");
+                if (rows > 0)
+                    Console.WriteLine("Employee Deleted Successfully");
+                else
+                {
+                    Console.WriteLine("Employee not found");
+                }
             }
         }
     }
