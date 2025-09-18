@@ -1,13 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data.SqlClient;
-using System.Xml.Linq;
 
 namespace Employee_Management_Tool
 {
+    class Employee
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Department { get; set; }
+        public double Salary { get; set; }
+    }
+
     class Program
     {
         static string connectionString = "Server = MANDEEP_OFFICE\\SQLEXPRESS; Database = EmployeeDB; Trusted_Connection = True;";
@@ -52,27 +56,29 @@ namespace Employee_Management_Tool
 
         static void AddEmployee()
         {
+            Employee emp = new Employee();
+
             Console.WriteLine("Enter Employee Id");
-            int id = Convert.ToInt32(Console.ReadLine());
+            emp.Id = Convert.ToInt32(Console.ReadLine());
 
             Console.WriteLine("Enter Employee Name");
-            string Name = Console.ReadLine();
+            emp.Name = Console.ReadLine();
 
-            Console.WriteLine("Enter Department");
-            string dept = Console.ReadLine();
+            Console.WriteLine("Enter Employee Department");
+            emp.Department = Console.ReadLine();
 
             Console.WriteLine("Enter Employee Salary");
-            double salary = Convert.ToDouble(Console.ReadLine());
+            emp.Salary = Convert.ToDouble(Console.ReadLine());
 
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 con.Open();
                 string query = "INSERT INTO Employees (Id, Name, Department, Salary) VALUES (@Id, @Name, @Dept, @Salary)";
                 SqlCommand cmd = new SqlCommand(query, con);
-                cmd.Parameters.AddWithValue("@Id", id);
-                cmd.Parameters.AddWithValue("@Name", Name);
-                cmd.Parameters.AddWithValue("@dept", dept);
-                cmd.Parameters.AddWithValue("@Salary", salary);
+                cmd.Parameters.AddWithValue("@Id", emp.Id);
+                cmd.Parameters.AddWithValue("@Name", emp.Name);
+                cmd.Parameters.AddWithValue("@dept", emp.Department);
+                cmd.Parameters.AddWithValue("@Salary", emp.Salary);
                 cmd.ExecuteNonQuery();
                 Console.WriteLine("Employee Added Successfully!!");
             }
@@ -81,6 +87,8 @@ namespace Employee_Management_Tool
 
         static void ViewEmployees()
         {
+            List<Employee> employees = new List<Employee>();
+
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 con.Open();
@@ -91,10 +99,21 @@ namespace Employee_Management_Tool
                 Console.WriteLine("\n Employee list");
                 while (reader.Read())
                 {
-                    Console.WriteLine($"ID: {reader["Id"]}, Name: {reader["Name"]}, Dept: {reader["Department"]}, Salary: {reader["Salary"]}");
-
+                    employees.Add(new Employee
+                        {
+                           Id = Convert.ToInt32(reader["Id"]),
+                           Name = reader["Name"].ToString(),
+                           Department = reader["Department"].ToString(),
+                           Salary = Convert.ToDouble(reader["Salary"])
+                        });
                 }
 
+            }
+
+            Console.WriteLine("\nEmployee list");
+            foreach (var emp in employees)
+            {
+                Console.WriteLine($"Id: {emp.Id}, Name: {emp.Name}, Department: {emp.Department}, Salary: {emp.Salary}");
             }
         }
 
@@ -103,24 +122,27 @@ namespace Employee_Management_Tool
              Console.WriteLine("Enter Employee Id to Update:");
              int id = Convert.ToInt32(Console.ReadLine());
 
+             Employee emp = new Employee();
+             emp.Id = id;
+
              Console.WriteLine("Enter New Name: ");
-             string Name = Console.ReadLine();
+             emp.Name = Console.ReadLine();
 
              Console.WriteLine("Enter New Department: ");
-             string dept = Console.ReadLine();
+             emp.Department = Console.ReadLine();
 
              Console.WriteLine("Enter new Salary: ");
-             double salary = Convert.ToDouble(Console.ReadLine());
+             emp.Salary = Convert.ToDouble(Console.ReadLine());
 
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 con.Open();
                 string query = "Update Employees SET Name=@Name, Department=@Dept, Salary=@Salary WHERE Id=@Id";
                 SqlCommand cmd = new SqlCommand(query, con);
-                cmd.Parameters.AddWithValue("@Id", id);
-                cmd.Parameters.AddWithValue("@Name", Name);
-                cmd.Parameters.AddWithValue("@dept", dept);
-                cmd.Parameters.AddWithValue("@Salary", salary);
+                cmd.Parameters.AddWithValue("@Id", emp.Id);
+                cmd.Parameters.AddWithValue("@Name", emp.Name);
+                cmd.Parameters.AddWithValue("@dept", emp.Department);
+                cmd.Parameters.AddWithValue("@Salary", emp.Salary);
                 int rows = cmd.ExecuteNonQuery();
 
                 if (rows > 0)
